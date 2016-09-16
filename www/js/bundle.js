@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var camera = __webpack_require__(6);
+	var camera = __webpack_require__(1);
 	/*
 	 * Licensed to the Apache Software Foundation (ASF) under one
 	 * or more contributor license agreements.  See the NOTICE file
@@ -111,7 +111,39 @@
 
 
 /***/ },
-/* 1 */,
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*global Camera navigator*/
+	__webpack_require__(2);
+	var camera = {
+	    initialize: function() {
+	        console.log("camera initialized");        
+	    }, 
+	    getPicture: function() {
+	        // pull up the gallery
+	        navigator.camera.getPicture(cameraSuccess, cameraError, libraryOptions);
+	        // return a selected picture
+	    },
+	    cameraSuccess: function (imageData) {
+	        return imageData;
+	    },
+	    cameraError: function (error) {
+	        console.log(error);
+	    },
+	    libraryOptions: {
+	        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+	        destinationType: Camera.DestinationType.NATIVE_URI
+	    },
+	    cameraOptions: {
+	        sourceType: Camera.PictureSourceType.CAMERA,
+	        cameraDirection: Camera.Direction.BACK,
+	        destinationType: Camera.DestinationType.NATIVE_URI
+	    }
+	}
+	module.exports(camera);
+
+/***/ },
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -457,43 +489,6 @@
 		if(oldSrc)
 			URL.revokeObjectURL(oldSrc);
 	}
-
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*** IMPORTS FROM imports-loader ***/
-	var Camera = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"cordova-plugin-camera.Camera\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-
-	/*global Camera navigator*/
-	__webpack_require__(2);
-	var camera = {
-	    initialize: function() {
-	        console.log("camera initialized");        
-	    }, 
-	    getPicture: function() {
-	        // pull up the gallery
-	        navigator.camera.getPicture(cameraSuccess, cameraError, libraryOptions);
-	        // return a selected picture
-	    },
-	    cameraSuccess: function (imageData) {
-	        return imageData;
-	    },
-	    cameraError: function (error) {
-	        console.log(error);
-	    },
-	    libraryOptions: {
-	        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-	        destinationType: Camera.DestinationType.NATIVE_URI
-	    },
-	    cameraOptions: {
-	        sourceType: Camera.PictureSourceType.CAMERA,
-	        cameraDirection: Camera.Direction.BACK,
-	        destinationType: Camera.DestinationType.NATIVE_URI
-	    }
-	}
-	module.exports(camera);
 
 
 /***/ }

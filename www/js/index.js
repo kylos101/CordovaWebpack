@@ -1,4 +1,4 @@
-var camera = require('imports?Camera=cordova-plugin-camera.Camera!./camera.js');
+var camera = require('./camera.js');
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
