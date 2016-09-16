@@ -24,4 +24,5 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <hook type="after_platform_add" src="hooks/installPlugins.js" />
 </widget>
