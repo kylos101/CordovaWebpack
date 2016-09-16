@@ -1,5 +1,7 @@
 /*global Camera navigator*/
 require('../css/camera.css');
+require('../Cordova');
+
 var camera = {
     initialize: function() {
         console.log("camera initialized");        

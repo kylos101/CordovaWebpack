@@ -8,8 +8,11 @@ function getDirectories(srcpath) {
   });
 }
 
-var platforms = getDirectories("./platforms");
-platforms.forEach(function (plat) {    
-    console.log("webpacking..." + plat);
-    exec(plat + "/webpack");
+function puts(error, stdout, stderr) {
+    console.log(stdout)
+}
+
+var platforms = getDirectories("platforms");
+platforms.forEach(function (plat) {            
+    exec("cd platforms/" + plat + "&&webpack&&cd..&&cd..", puts);
 });

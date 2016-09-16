@@ -25,6 +25,6 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     
-    <hook type="after_platform_add" src="hooks/installPlugins.js" />
-    <hook type="after_build" src="scripts/afterBuild.js" />
+    <hook type="after_platform_add" src="hooks/afterPlatformAdd.js" />
+    <hook type="after_build" src="hooks/afterBuild.js" />
 </widget>
