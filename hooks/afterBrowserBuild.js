@@ -1,6 +1,8 @@
+#!/usr/bin/env node
+
 var fs = require('fs'),
-    path = require('path'),    
-    child_process = require('child_process');
+    path = require('path'),        
+    exec = require('child_process').exec;
 
 function getDirectories(srcpath) {
   return fs.readdirSync(srcpath).filter(function(file) {
@@ -8,28 +10,19 @@ function getDirectories(srcpath) {
   });
 }
 
+function puts(error, stdout, stderr) {
+    console.log(stdout)
+}
+ 
 var platforms = getDirectories("platforms");
-platforms.forEach(function (plat) {                      
-    
-    const child;
+platforms.forEach(function (plat) {                          
     if (plat === "browser")
     {
-        child = child_process.spawn(
-            "cmd.exe",
-            ["/c", "webpack"],
-            {cwd: path.normalize(path.join(process.cwd(), "platforms", plat, "www"))}
-        );
-    } 
+        var thePath = path.normalize(path.join(process.cwd(), "platforms", plat, "www"));
+        var options = {                    
+                    cwd: thePath                    
+                    };
 
-    child.stdout.on('data', (data) => {
-        console.log(`stdout: ${data}`);
-    });
-
-    child.stderr.on('data', (data) => {
-        console.log(`stderr: ${data}`);
-    });
-
-    child.on('close', (code) => {
-        console.log(`child process exited with code ${code}`);
-    });
+        exec("webpack", options, puts);
+    }
 });
