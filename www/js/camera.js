@@ -1,10 +1,13 @@
 /*global Camera navigator*/
-
-require('../css/camera.css');    
-    
+   
 var camera = {
-    initialize: function() {
-        console.log("camera initialized");        
+    initialize: function() {        
+        this.bindEvents();        
+        console.log("camera initialized");      
+    },
+    bindEvents: function () {
+        var getImageButton = document.getElementById("getImage");
+        getImageButton.addEventListener("click", this.cameraInstance.getPicture);
     },     
     cameraSuccess: function (imageData) {
         return imageData;
@@ -33,9 +36,14 @@ var cameraExport = {
     },
     takePicture: function () {
         navigator.camera.getPicture(camera.cameraSuccess, camera.cameraError, camera.cameraOptions());
-    }
+    },
+    content: function () {
+        require('../css/camera.css');
+        var content = require('../html/camera.html'); 
+        return content;
+    }  
 }
 
-camera.initialize();
+//camera.initialize();
 
 module.exports = cameraExport;

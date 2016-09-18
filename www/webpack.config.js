@@ -6,7 +6,10 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.css$/, loader: "style!css"}
+            {test: /\.css$/, loader: "style!css"},
+            {test: /\.html$/, loader: "html"}
         ]
-    }
+    },
+    progress: true,
+    colors: true
 }

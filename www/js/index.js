@@ -1,4 +1,4 @@
-var cameraApi = require('./cameraApi.js');
+var app = require('./app.js');
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -17,12 +17,12 @@ var cameraApi = require('./cameraApi.js');
  * specific language governing permissions and limitations
  * under the License.
  */
-var app = {
+var index = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();                
     },
-    cameraInstance: cameraApi,
+    
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
@@ -31,17 +31,14 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         
         var myTestLink = document.getElementById("test");
-        myTestLink.addEventListener("click", OpenALink);
-
-        var getImageButton = document.getElementById("getImage");
-        getImageButton.addEventListener("click", this.cameraInstance.getPicture)
+        myTestLink.addEventListener("click", OpenALink);        
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        index.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -60,4 +57,4 @@ function OpenALink() {
   window.open("http://www.google.com","_self","location=no,toolbar=no");
 }
 
-app.initialize();
+index.initialize();
