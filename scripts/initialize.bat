@@ -2,7 +2,6 @@ SETLOCAL
 
 call :npmInstall cordova
 call :npmInstall webpack
-call :npmInstall webpack-dev-server
 
 call :addPlatform android
 call :addPlatform browser

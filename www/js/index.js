@@ -1,4 +1,4 @@
-var camera = require('./camera.js');
+var cameraApi = require('./cameraApi.js');
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,10 +20,9 @@ var camera = require('./camera.js');
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents(); 
-        this.cameraInstance.initialize();       
+        this.bindEvents();                
     },
-    cameraInstance: camera,
+    cameraInstance: cameraApi,
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
@@ -35,7 +34,7 @@ var app = {
         myTestLink.addEventListener("click", OpenALink);
 
         var getImageButton = document.getElementById("getImage");
-        getImageButton.addEventListener("click", this.cameraInstance.getPicture())
+        getImageButton.addEventListener("click", this.cameraInstance.getPicture)
     },
     // deviceready Event Handler
     //

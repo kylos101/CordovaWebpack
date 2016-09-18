@@ -17,18 +17,20 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    
     <platform name="android">
         <allow-intent href="market:*" />
         <hook type="after_prepare" src="hooks/androidAfterPrepare.js" />
     </platform>
+    
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    
     <platform name="browser">        
         <hook type="after_prepare" src="hooks/browserAfterPrepare.js" />
     </platform>
     
-    <hook type="after_platform_add" src="hooks/installPlugins.js" />
-    
+    <hook type="after_platform_add" src="hooks/installPlugins.js" />        
 </widget>
