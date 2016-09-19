@@ -1,16 +1,16 @@
-var router = {
-    content,
+var controller = {
+    content: null,
     write: function () {
         var contentDiv = document.getElementById("content");
         contentDiv.innerHTML = this.content;
     }
 }
 
-var routerExport = {
+var contentControllerExport = {
     setContent: function (content) {
-        router.content = content;
-        router.write();
+        controller.content = content;
+        controller.write();
     }
 }
 
-module.exports = routerExport;
+module.exports = contentControllerExport;

@@ -1,9 +1,10 @@
-var router = require('./router.js');
+var contentController = require('./content.controller.js');
 
 var app = {
     initialize: function() {
         var camera = require('./camera.js');        
-        router.setContent(camera.content());
+        contentController.setContent(camera.content());
+        camera.initialize();
     }    
 }
 

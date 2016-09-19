@@ -1,14 +1,6 @@
 /*global Camera navigator*/
    
-var camera = {
-    initialize: function() {        
-        this.bindEvents();        
-        console.log("camera initialized");      
-    },
-    bindEvents: function () {
-        var getImageButton = document.getElementById("getImage");
-        getImageButton.addEventListener("click", this.cameraInstance.getPicture);
-    },     
+var camera = {         
     cameraSuccess: function (imageData) {
         return imageData;
     },
@@ -27,23 +19,44 @@ var camera = {
             cameraDirection: Camera.Direction.BACK,
             destinationType: Camera.DestinationType.NATIVE_URI
         }
+    },
+    libraryPicture: function() {        
+        navigator.camera.getPicture(this.cameraSuccess, this.cameraError, this.libraryOptions());        
+    },
+    takePicture: function () {
+        navigator.camera.getPicture(this.cameraSuccess, this.cameraError, this.cameraOptions());
     }
 }
 
+
 var cameraExport = {
-    getPicture: function() {        
-        navigator.camera.getPicture(camera.cameraSuccess, camera.cameraError, camera.libraryOptions());        
-    },
-    takePicture: function () {
-        navigator.camera.getPicture(camera.cameraSuccess, camera.cameraError, camera.cameraOptions());
-    },
     content: function () {
         require('../css/camera.css');
         var content = require('../html/camera.html'); 
         return content;
-    }  
-}
+    },
+    initialize: function () {
+        var getImageButton = document.getElementById("getImage");
+        getImageButton.addEventListener("click", this.getPicture);
+    },
+    getPicture: function () {
+        var radios = document.getElementsByName('imageRadio');
 
-//camera.initialize();
+        for (var i = 0, length = radios.length; i < length; i++) {            
+            if (radios[i].checked) {                                
+                if (radios[i].value === "Camera")
+                {
+                    return camera.takePicture();
+                }
+                if (radios[i].value === "Library")
+                {
+                    return camera.libraryPicture();
+                }                                                          
+                
+                break;
+            }
+        }
+    }
+}
 
 module.exports = cameraExport;

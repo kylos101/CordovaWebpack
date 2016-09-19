@@ -7,6 +7,15 @@ exec = require('child_process').exec;
 
 function puts(error, stdout, stderr) {
     console.log(stdout)
+
+    if (stderr || error)
+    {
+        exec("cordova clean", puts);
+        exec("cordova clean", puts);
+        console.log(".")
+        console.log("Change a file and try again...")
+        console.log(".")
+    }
 }
 
 var thePath = path.normalize(path.join(process.cwd(), "www"));
