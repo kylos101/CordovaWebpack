@@ -5,7 +5,7 @@ var camera = {
         return imageData;
     },
     cameraError: function (error) {
-        console.log(error);
+        alert(error);
     },
     libraryOptions: function () {
             return {
