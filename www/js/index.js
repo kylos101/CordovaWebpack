@@ -28,10 +28,7 @@ var index = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-        
-        var myTestLink = document.getElementById("test");
-        myTestLink.addEventListener("click", OpenALink);        
+        document.addEventListener('deviceready', this.onDeviceReady, false);                    
     },
     // deviceready Event Handler
     //
@@ -41,20 +38,9 @@ var index = {
         index.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
+    receivedEvent: function(id) {        
         console.log('Received Event: ' + id);
     }
 };
-
-function OpenALink() {
-  window.open("http://www.google.com","_self","location=no,toolbar=no");
-}
 
 index.initialize();
