@@ -2,16 +2,15 @@
   "name": "cordova.test",
   "version": "1.0.0",
   "description": "",
-  "dependencies": {},
-  "devDependencies": {
-    "concurrently": "^2.2.0",
+  "dependencies": {
+    "purecss": "^0.6.0"
+  },
+  "devDependencies": {    
     "css-loader": "^0.25.0",
     "html-loader": "^0.4.4",
     "imports-loader": "^0.6.5",
-    "purecss": "^0.6.0",
     "style-loader": "^0.13.1",
-    "watch": "^0.19.2",
-    "webpack-dev-server": "^1.15.2"
+    "watch": "^0.19.2"    
   },
   "scripts": {
     "initialize": "scripts\\initialize.bat",
