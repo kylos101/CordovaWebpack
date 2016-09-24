@@ -6,9 +6,9 @@
 // the identifier, the filesystem location 
 // or the URL
 var pluginlist = [
-    "cordova-plugins-camera",
-    "cordova-plugins-whitelist",
-    "cordova-plugins-compat"
+    "cordova-plugin-compat",
+    "cordova-plugin-camera",
+    "cordova-plugin-whitelist"    
 ];
  
 // no need to configure below
