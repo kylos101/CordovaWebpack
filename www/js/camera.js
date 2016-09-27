@@ -1,8 +1,13 @@
 /*global Camera navigator*/
    
 var camera = {         
+    setImageSource: function (source) {
+        var image = document.getElementById("image");
+        image.setAttribute("src", source);
+    },
     onSuccess: function (imageData) {
-        return imageData;
+        // the context for this is window, hence using camera reference
+        camera.setImageSource(imageData);
     },
     onError: function (error) {                
         alert(error);
@@ -10,21 +15,27 @@ var camera = {
     libraryOptions: function () {
             return {
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            destinationType: Camera.DestinationType.NATIVE_URI
+            destinationType: Camera.DestinationType.NATIVE_URI,
+            saveToPhotoAlbum: true,
+            correctOrientation: true,
+            quality: 50
         }
     },
     cameraOptions: function () {
         return {
             sourceType: Camera.PictureSourceType.CAMERA,
             cameraDirection: Camera.Direction.BACK,
-            destinationType: Camera.DestinationType.NATIVE_URI
+            destinationType: Camera.DestinationType.NATIVE_URI,
+            saveToPhotoAlbum: true,
+            correctOrientation: true,
+            quality: 50
         }
     },
     libraryPicture: function() {                
-        debugger; // hits in VSCode editor; hits in browser when debugger is open
+        // debugger; // hits in VSCode editor; hits in browser when debugger is open
         navigator.camera.getPicture(this.onSuccess, this.onError, this.libraryOptions());
         // throw "boo"; // displays in VSCode editor
-        // TODO: trouble hitting set breakpoints...how do I find them?                 
+        // TODO: trouble hitting set breakpoints...can they be set?                 
     },
     takePicture: function () {
         navigator.camera.getPicture(this.onSuccess, this.onError, this.cameraOptions());
@@ -38,7 +49,7 @@ var cameraExport = {
         var content = require('../html/camera.html'); 
         return content;
     },
-    initialize: function () {
+    initialize: function () {        
         var getImageButton = document.getElementById("getImage");
         getImageButton.addEventListener("click", this.getPicture);
     },

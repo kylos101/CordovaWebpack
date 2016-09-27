@@ -4,7 +4,7 @@ var app = {
     initialize: function() {
         var camera = require('./camera.js');
         var motion = require('./motion.js');     
-        contentController.setContent(motion);         
+        contentController.setContent(camera);         
     }    
 }
 
