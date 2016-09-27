@@ -5,16 +5,20 @@ fs = require('fs'),
 path = require('path'),        
 exec = require('child_process').exec;
 
+exec("cordova build browser", puts);
+
 function puts(error, stdout, stderr) {
     console.log(stdout)
 
     if (stderr || error)
-    {
-        exec("cordova clean", puts);
-        exec("cordova clean", puts);
-        console.log(".")
-        console.log("Change a file and try again...")
-        console.log(".")
+    {        
+        console.log(".");
+        console.log(stderr);
+        console.log(".");
+        console.log(error);
+        console.log(".");
+        console.log("Change a file and try again...");
+        console.log(".");        
     }
 }
 

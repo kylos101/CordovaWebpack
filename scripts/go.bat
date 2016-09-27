@@ -1,4 +1,4 @@
 echo off
 start cmd /k node watch.js
-start cmd /k cordova serve -verbose
+start cmd /k lite-server
 cls
