@@ -1,10 +1,10 @@
-var contentController = require('./content.controller.js');
+var componentController = require('./component.controller.js');
 
 var app = {
     initialize: function() {
         var camera = require('./camera.js');
         var motion = require('./motion.js');     
-        contentController.setContent(camera);         
+        componentController.setContent(camera);         
     }    
 }
 

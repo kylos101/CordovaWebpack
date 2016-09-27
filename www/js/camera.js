@@ -15,20 +15,22 @@ var camera = {
     libraryOptions: function () {
             return {
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            destinationType: Camera.DestinationType.NATIVE_URI,
+            destinationType: Camera.DestinationType.FILE_URI,
             saveToPhotoAlbum: true,
             correctOrientation: true,
-            quality: 50
+            quality: 50,
+            mediaType: Camera.MediaType.PICTURE
         }
     },
     cameraOptions: function () {
         return {
             sourceType: Camera.PictureSourceType.CAMERA,
             cameraDirection: Camera.Direction.BACK,
-            destinationType: Camera.DestinationType.NATIVE_URI,
+            destinationType: Camera.DestinationType.FILE_URI,
             saveToPhotoAlbum: true,
             correctOrientation: true,
-            quality: 50
+            quality: 50,
+            mediaType: Camera.MediaType.PICTURE
         }
     },
     libraryPicture: function() {                
