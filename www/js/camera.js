@@ -1,10 +1,10 @@
 /*global Camera navigator*/
    
 var camera = {         
-    cameraSuccess: function (imageData) {
+    onSuccess: function (imageData) {
         return imageData;
     },
-    cameraError: function (error) {                
+    onError: function (error) {                
         alert(error);
     },
     libraryOptions: function () {
@@ -22,12 +22,12 @@ var camera = {
     },
     libraryPicture: function() {                
         debugger; // hits in VSCode editor; hits in browser when debugger is open
-        navigator.camera.getPicture(this.cameraSuccess, this.cameraError, this.libraryOptions());
+        navigator.camera.getPicture(this.onSuccess, this.onError, this.libraryOptions());
         // throw "boo"; // displays in VSCode editor
         // TODO: trouble hitting set breakpoints...how do I find them?                 
     },
     takePicture: function () {
-        navigator.camera.getPicture(this.cameraSuccess, this.cameraError, this.cameraOptions());
+        navigator.camera.getPicture(this.onSuccess, this.onError, this.cameraOptions());
     }
 }
 

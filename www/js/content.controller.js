@@ -7,9 +7,18 @@ var controller = {
 }
 
 var contentControllerExport = {
-    setContent: function (content) {
-        controller.content = content;
+    setContent: function (component) {
+        if (!component.content && typeof(component.content)==="function")
+        {
+            throw "Component lacks a content function."
+        }
+        if (!component.initialize && typeof(component.initialize)==="function")
+        {
+            throw "Component lacks an initialize function."
+        }
+        controller.content = component.content();
         controller.write();
+        component.initialize();
     }
 }
 

@@ -31,4 +31,5 @@
     <hook src="hooks/installPlugins.js" type="after_platform_add" />
     <engine name="android" spec="~5.2.2" />
     <engine name="browser" spec="~4.1.0" />
+    <plugin name="cordova-plugin-device-motion" spec="~1.2.2" />
 </widget>
