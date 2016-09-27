@@ -46,6 +46,7 @@ var camera = {
 
 
 var cameraExport = {
+    id: "loadCamera",
     content: function () {
         require('../css/camera.css');
         var content = require('../html/camera.html'); 

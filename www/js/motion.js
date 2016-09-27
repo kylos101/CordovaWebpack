@@ -193,6 +193,7 @@ var motion = {
 }
 
 var motionExports = {
+    id: "loadMotion",
     content: function () {
         require('../css/motion.css');
         var content = require('../html/motion.html'); 
