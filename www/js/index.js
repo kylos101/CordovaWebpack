@@ -20,7 +20,8 @@
 var index = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();                
+        this.bindEvents();
+        require('../css/index.css');                
     },
     
     // Bind Event Listeners

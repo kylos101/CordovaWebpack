@@ -3,6 +3,6 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */       
 }
-body,.app {
-    margin: 10px;
+.app,.menu {  
+    margin: 10px; 
 }

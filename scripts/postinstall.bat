@@ -10,6 +10,7 @@ xcopy /Y "node_modules\jquery\dist\jquery.js" "www\js\vendor\jquery\*"
 xcopy /Y "node_modules\jquery\dist\jquery.min.map" "www\js\vendor\jquery\*"
 
 xcopy /Y "node_modules\bootstrap\dist\css\bootstrap*.css" "www\css\vendor\bootstrap\*"
+xcopy /Y "node_modules\bootstrap\dist\css\bootstrap*.map" "www\css\vendor\bootstrap\*"
 xcopy /Y "node_modules\bootstrap\dist\js\bootstrap*.js" "www\js\vendor\bootstrap\*"
 xcopy /Y "node_modules\bootstrap\dist\fonts\*.*" "www\css\vendor\bootstrap\fonts\*"
 REM xcopy /Y "node_modules\bootstrap\dist\fonts\*.*" "www\fonts\*"

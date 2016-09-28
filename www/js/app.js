@@ -12,8 +12,7 @@ var app = {
         var camera = require('./camera.js');
         var motion = require('./motion.js');
 
-        console.log('received: ' + e.target.id);
-        require('../css/index.css');
+        console.log('received: ' + e.target.id);        
         
         if (camera.id === e.target.id)
         {
