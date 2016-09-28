@@ -1,6 +1,6 @@
 {
   "port": 8000,
-  "files": ["./platforms/browser/www/**/*.{html,htm,css,js,eot,svg,ttf,woff,woff2}"],
+  "files": ["./platforms/browser/www/**/*.{html,htm,css,js,eot,svg,ttf,woff,woff2,map}"],
   "server": { "baseDir": "./platforms/browser/www" },
   "open": false
 }

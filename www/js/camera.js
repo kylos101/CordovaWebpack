@@ -1,4 +1,7 @@
 /*global Camera navigator*/
+
+require('bootstrap-css'); 
+// require('bootstrap-fonts');
    
 var camera = {         
     setImageSource: function (source) {
@@ -47,12 +50,12 @@ var camera = {
 
 var cameraExport = {
     id: "loadCamera",
-    content: function () {
+    content: function () {       
         require('../css/camera.css');
         var content = require('../html/camera.html'); 
         return content;
     },
-    initialize: function () {        
+    initialize: function () {               
         var getImageButton = document.getElementById("getImage");
         getImageButton.addEventListener("click", this.getPicture);
     },

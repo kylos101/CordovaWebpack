@@ -1,8 +1,23 @@
-<h1>Camera demo</h1> 
+<div>
+    <h1>Camera demo</h1>    
+</div>
+ 
 <div id="camera">    
-    <form>        
-        <input type="radio" name="imageRadio" value="Camera" checked>Camera
-        <input type="radio" name="imageRadio" value="Library" >Library
+    <form>      
+        <div class="radio">
+            <label for="optCamera">
+                <input type="radio" name="imageRadio" value="Camera" id="optCamera" checked>
+                Camera
+            </label>    
+        </div>  
+        
+        <div class="radio">
+            <label for="optLibrary">
+                <input type="radio" name="imageRadio" value="Library" id="optLibrary">
+                Library
+            </label>    
+        </div>
+                
     </form> 
     <button id="getImage">Get an image</button>
     <figure>

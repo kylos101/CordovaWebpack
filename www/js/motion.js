@@ -168,7 +168,7 @@ var motion = {
         motion.context.clearRect(0,0,200,200);      
         motion.context.fillText(motion.direction,10,50);
         motion.setSpeed(acceleration);
-        motion.context.fillText("Moving Avg (5), freq. " + motion.options.frequency + "ms: ",10,100);        
+        motion.context.fillText("Moving Avg (" + motion.history + "), freq. " + motion.options.frequency + "ms: ",10,100);        
         motion.context.fillText(motion.speed + ", " + motion.speedValue,10,150);
     },
     onError: function (){

@@ -8,6 +8,9 @@ var controller = {
 
 var contentControllerExport = {
     setContent: function (component) {
+        controller.content = "<div></div>";
+        controller.write();
+        
         if (!component.content && typeof(component.content)==="function")
         {
             throw "Component lacks a content function."
