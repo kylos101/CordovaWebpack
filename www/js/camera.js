@@ -1,6 +1,5 @@
 /*global Camera navigator*/
 
-require('bootstrap-css'); 
 // require('bootstrap-fonts');
    
 var camera = {         
@@ -51,18 +50,21 @@ var camera = {
 var cameraExport = {
     id: "loadCamera",
     content: function () {       
+        require('bootstrap-css'); 
         require('../css/camera.css');
         var content = require('../html/camera.html'); 
         return content;
     },
-    initialize: function () {               
+    initialize: function () {          
         var getImageButton = document.getElementById("getImage");
         getImageButton.addEventListener("click", this.getPicture);
     },
     getPicture: function () {
+        console.log('get the picture');
+        
         var radios = document.getElementsByName('imageRadio');
 
-        for (var i = 0, length = radios.length; i < length; i++) {            
+        for (var i = 0, length = radios.length; i < length; i++) {                                 
             if (radios[i].checked) {                                
                 if (radios[i].value === "Camera")
                 {

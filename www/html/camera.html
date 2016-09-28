@@ -1,26 +1,25 @@
 <div>
     <h1>Camera demo</h1>    
-</div>
+</div> 
  
-<div id="camera">    
-    <form>      
-        <div class="radio">
-            <label for="optCamera">
-                <input type="radio" name="imageRadio" value="Camera" id="optCamera" checked>
-                Camera
-            </label>    
-        </div>  
-        
-        <div class="radio">
-            <label for="optLibrary">
-                <input type="radio" name="imageRadio" value="Library" id="optLibrary">
-                Library
-            </label>    
+<div id="camera" class="container">
+    <form>
+        <div class="row btn-group" data-toggle="buttons">                        
+            <label for="optCamera" class="btn btn-primary active">
+                <input type="radio" name="imageRadio" value="Camera" id="optCamera" checked>Camera
+            </label>                                                
+                    
+            <label for="optLibrary" class="btn btn-primary">
+                <input type="radio" name="imageRadio" value="Library" id="optLibrary">Library
+            </label>                                                                
         </div>
-                
-    </form> 
-    <button id="getImage">Get an image</button>
-    <figure>
-        <img id="image">
-    </figure>         
+        <div class="row">
+            <button id="getImage" type="button" class="btn">Get an image</button>    
+        </div>
+        <div class="row">
+            <figure>
+                <img id="image">
+            </figure>    
+        </div>                                         
+    </form>     
 </div>
