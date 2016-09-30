@@ -5,3 +5,5 @@ jquery*
 bootstrap*
 www/css/vendor/fonts
 www/res
+src/css/vendor/fonts
+src/res

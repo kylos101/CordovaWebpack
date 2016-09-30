@@ -6,7 +6,7 @@ module.exports = {
     output: {
         path: "./js",
         filename: "bundle.js",
-        devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]?[loaders]'        
+        devtoolModuleFilenameTemplate: 'webpack:///[resource-path]?[loaders]'        
     },
     devtool: 'source-map',
     module: {
@@ -22,7 +22,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             "$":"jquery",
             "jQuery":"jquery",
-            "window.jQuery":"jquery"            
+            "window.jQuery":"jquery"       
         }) 
     ],
     resolve : {
