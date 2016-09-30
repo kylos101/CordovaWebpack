@@ -1,7 +1,7 @@
 echo off
-REM Our Cordova dev loop; TODO: replace watch.js with grunt or something
-start cmd /k node watch.js
-start cmd /k lite-server
+REM Our Cordova dev loop
+start cmd /k "cordova build browser&&node watch.js""
+start cmd /k "cordova serve 8001""
 cls
 
 REM Runs afterPrepare hooks

@@ -49,15 +49,16 @@ var camera = {
 
 var cameraExport = {
     id: "loadCamera",
+    getImageButton: null,
     content: function () {       
         require('bootstrap-css'); 
         require('../css/camera.css');
         var content = require('../html/camera.html'); 
         return content;
     },
-    initialize: function () {          
-        var getImageButton = document.getElementById("getImage");
-        getImageButton.addEventListener("click", this.getPicture);
+    initialize: function () {                  
+        this.getImageButton = document.getElementById("getImage");
+        this.getImageButton.addEventListener("click", this.getPicture);
     },
     getPicture: function () {
         console.log('get the picture');
@@ -78,6 +79,9 @@ var cameraExport = {
                 break;
             }
         }
+    },
+    dispose: function () {
+        this.getImageButton.removeEventListener("click", this.getPicture);
     }
 }
 

@@ -178,9 +178,7 @@ var motion = {
         // in milliseconds
         frequency: 500
     }, 
-    watch: function () {                    
-        navigator.accelerometer.watchAcceleration(this.onSuccess, this.onError, this.options);
-    },
+    watch: null,
     initialize: function () {             
         
         // hook up our motion component to the corresponding element
@@ -188,7 +186,8 @@ var motion = {
         motion.context = element.getContext("2d");
 
         // start reading data from the accelerometer
-        motion.watch();                   
+        var watchID = navigator.accelerometer.watchAcceleration(motion.onSuccess, motion.onError, motion.options);
+        motion.watch = watchID;                          
     }
 }
 
@@ -201,6 +200,14 @@ var motionExports = {
     },
     initialize: function () {
         document.addEventListener("deviceready", motion.initialize, false);
+    },
+    dispose: function () {        
+        document.removeEventListener("deviceready", motion.initialize, false);
+        navigator.accelerometer.clearWatch(motion.watch);  
+                        
+        // BUG - the accelerometer is not truly stopped, which stacks up event listeners
+        // the error, Error: exec proxy not found for :: Accelerometer :: stop
+        // the issue, https://issues.apache.org/jira/browse/CB-7629                 
     }
 }
 

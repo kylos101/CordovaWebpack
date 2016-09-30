@@ -3,7 +3,6 @@ platforms
 plugins
 jquery*
 bootstrap*
-www/css/vendor/fonts
-www/res
+www/*
 src/css/vendor/fonts
 src/res
