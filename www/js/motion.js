@@ -176,7 +176,7 @@ var motion = {
     },
     options: { 
         // in milliseconds
-        frequency: 100
+        frequency: 500
     }, 
     watch: function () {                    
         navigator.accelerometer.watchAcceleration(this.onSuccess, this.onError, this.options);

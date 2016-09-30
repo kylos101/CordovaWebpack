@@ -1,25 +1,31 @@
 <div>
-    <h1>Camera</h1>    
+    <h1>Camera Plugin</h1>    
 </div> 
  
 <div id="camera" class="container">
     <form>
-        <div class="row btn-group" data-toggle="buttons">                        
-            <label for="optCamera" class="btn btn-primary active">
-                <input type="radio" name="imageRadio" value="Camera" id="optCamera" checked>Camera
-            </label>                                                
-                    
-            <label for="optLibrary" class="btn btn-primary">
-                <input type="radio" name="imageRadio" value="Library" id="optLibrary">Library
-            </label>                                                                
-        </div>
-        <div class="row">
-            <button id="getImage" type="button" class="btn">Get an image</button>    
-        </div>
-        <div class="row">
-            <figure>
-                <img id="image">
-            </figure>    
-        </div>                                         
+        <div class="form-group">
+            <label>Select an image source</label>
+            <div class="row btn-group" data-toggle="buttons">                        
+                <label for="optCamera" class="btn btn-primary active">
+                    <input type="radio" name="imageRadio" value="Camera" id="optCamera" checked>Camera
+                </label>                                                
+                        
+                <label for="optLibrary" class="btn btn-primary">
+                    <input type="radio" name="imageRadio" value="Library" id="optLibrary">Library
+                </label>                                                                
+            </div>    
+        </div>                
+         
+        <div class="form-group">
+            <div class="row">
+                <button id="getImage" type="button" class="btn">Get an image</button>    
+            </div>
+            <div class="row">
+                <figure>
+                    <img id="image">
+                </figure>    
+            </div>    
+        </div>                                                         
     </form>     
 </div>

@@ -11,4 +11,5 @@ REM Does NOT run afterPrepare hooks
 REM phonegap serve --verbose
 
 REM For debugging over the network
+REM use current ip address
 REM weinre --boundHost 192.168.1.145
