@@ -5,7 +5,7 @@
 var camera = {         
     setImageSource: function (source) {
         var image = document.getElementById("image");
-        image.setAttribute("src", source);
+        image.setAttribute("src", "data:image/png;base64," + source);
     },
     onSuccess: function (imageData) {
         // the context for this is window, hence using camera reference
@@ -17,7 +17,7 @@ var camera = {
     libraryOptions: function () {
             return {
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            destinationType: Camera.DestinationType.FILE_URI,
+            destinationType: Camera.DestinationType.DATA_URL,
             saveToPhotoAlbum: true,
             correctOrientation: true,
             quality: 50,
@@ -28,7 +28,7 @@ var camera = {
         return {
             sourceType: Camera.PictureSourceType.CAMERA,
             cameraDirection: Camera.Direction.BACK,
-            destinationType: Camera.DestinationType.FILE_URI,
+            destinationType: Camera.DestinationType.DATA_URL,
             saveToPhotoAlbum: true,
             correctOrientation: true,
             quality: 50,

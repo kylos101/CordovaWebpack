@@ -205,7 +205,7 @@ var motionExports = {
         document.removeEventListener("deviceready", motion.initialize, false);
         navigator.accelerometer.clearWatch(motion.watch);  
                         
-        // BUG - the accelerometer is not truly stopped, which stacks up event listeners
+        // SMALL BUG - clearWatch leaves devicemotion event listeners behind, they don't fire though
         // the error, Error: exec proxy not found for :: Accelerometer :: stop
         // the issue, https://issues.apache.org/jira/browse/CB-7629                 
     }
