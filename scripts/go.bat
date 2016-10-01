@@ -1,5 +1,6 @@
 echo off
 REM Our Cordova dev loop
+if not exist www md www
 start cmd /k "cordova build browser&&node watch.js""
 start cmd /k "cordova serve 8001""
 cls
