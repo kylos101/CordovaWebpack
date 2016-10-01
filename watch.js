@@ -5,6 +5,8 @@ fs = require('fs'),
 path = require('path'),        
 exec = require('child_process').exec;
 
+var triggered = false;
+
 function puts(error, stdout, stderr) {
     console.log(stdout)
 
@@ -24,12 +26,27 @@ var thePath = path.normalize(path.join(process.cwd(), "src"));
 watch.createMonitor(thePath, function (monitor) {
         
     monitor.on("created", function (f, stat) {
-        exec("cordova build browser&&echo built on: %DATE% %TIME%", puts);
+        if (!triggered)
+        {
+            triggered = true;
+            exec("cordova build browser&&echo built on: %DATE% %TIME%", puts);
+            triggered = false;
+        }      
     });
     monitor.on("changed", function (f, curr, prev) {
-        exec("cordova build browser&&echo built on: %DATE% %TIME%", puts);
+        if (!triggered)
+        {
+            triggered = true;
+            exec("cordova build browser&&echo built on: %DATE% %TIME%", puts);
+            triggered = false;
+        }       
     });
     monitor.on("removed", function (f, stat) {
-        exec("cordova build browser&&echo built on: %DATE% %TIME%", puts);
+        if (!triggered)
+        {
+            triggered = true;
+            exec("cordova build browser&&echo built on: %DATE% %TIME%", puts);
+            triggered = false;
+        }       
     });  
 });

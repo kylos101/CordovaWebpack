@@ -5,7 +5,7 @@ var motion = {
     direction: "Start", // the calculated orientation for this device
     speed: "Stopped", // how quickly is the device orientation changing
     speedValue: 0, // the velocity for the orientation change
-    history: 5, // how far back we track device orientation states
+    history: 5, // how far back we track device orientation states    
     isReversed: function (value) {
         if (value > 0)
         { 
@@ -17,7 +17,9 @@ var motion = {
         }
     },
     items: [],    
-    getSpeedValue: function (item) {
+    getSpeedValue: function (acceleration) {       
+      var item = acceleration; // in chrome, this doesn't change.    
+      
       if (!this.items) {
           this.items = [];
           return null;
@@ -89,12 +91,12 @@ var motion = {
             this.speed = "Okay, we're moving";
             return;
         }
-        if (this.speedValue < .08)
+        if (this.speedValue < .05)
         {
             this.speed = "Whoooa!";
             return;
-        }
-        if (this.speedValue >= .08)
+        } 
+        if (this.speedValue >= .05)
         {
             this.speed = "Super fast!!!";
             return;
@@ -174,9 +176,8 @@ var motion = {
     onError: function (){
         alert('Error!');
     },
-    options: { 
-        // in milliseconds
-        frequency: 500
+    options: {         
+        frequency: 500 // how often (in ms) this should poll
     }, 
     watch: null,
     initialize: function () {             
@@ -187,7 +188,7 @@ var motion = {
 
         // start reading data from the accelerometer
         var watchID = navigator.accelerometer.watchAcceleration(motion.onSuccess, motion.onError, motion.options);
-        motion.watch = watchID;                          
+        motion.watch = watchID;                           
     }
 }
 
