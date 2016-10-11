@@ -11,7 +11,7 @@ var controller = {
 }
 
 var contentControllerExport = {
-    setContent: function (component) {       
+    setContent: function (component) {
         if (!component.content || typeof(component.content)!=="function")
         {
             throw "Component lacks a content function."
@@ -25,17 +25,19 @@ var contentControllerExport = {
             throw "Component lacks a dispose function."
         }
 
-        // components must have a dispose method, and it had better ditch events! 
+        // components must have a dispose method, and it had better ditch events!
         if (controller.current)
         {
             controller.disposeCurrent();
         }
-        
+
         controller.current = component;
-       
+
+        // reset the mark-up
         controller.content = "<div></div>";
         controller.write();
-                
+
+        // write the mark-up for the component
         controller.content = component.content();
         controller.write();
         component.initialize();
