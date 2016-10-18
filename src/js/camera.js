@@ -1,6 +1,10 @@
 /*global Camera navigator*/
 
-// require('bootstrap-fonts');
+// custom framework writes the mark-up and initializes
+// show the camera mark-up
+// start with cameraExport.initialize
+// set breakpoints on getPicture (line 98) and walk in
+// set breakpoints on onSuccess (line 25) to inspect the result and onError (line 29)
 
 var camera = {
     getImage: function () {
@@ -71,9 +75,8 @@ var camera = {
     }
 }
 
-
 var cameraExport = {
-    id: "loadCamera",
+    id: "cameraFeature",
     getImageButton: null,
     content: function () {
         require('bootstrap-css');

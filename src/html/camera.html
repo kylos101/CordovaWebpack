@@ -9,6 +9,7 @@
                 <label>Select an image source</label>
             </div>
 
+            <!--Bootstrap styling for radio toggle buttons-->
             <div class="row btn-group" data-toggle="buttons">
                 <label for="optCamera" class="btn btn-primary active">
                     <input type="radio" name="imageRadio" value="Camera" id="optCamera" checked>Camera
@@ -22,6 +23,7 @@
 
         <div class="form-group">
             <div class="row">
+                <!--Clicking this button inspects the radio toggle and executes the corresponding task-->
                 <button id="getImage" type="button" class="btn">Get an image</button>
             </div>
             <div class="row">
@@ -33,5 +35,6 @@
         </div>
 
         <!--the cordova plugin doesn't "write" HTML here... -->
+        <!--It writes to document.body...and requires special clean-up-->
     </form>
 </div>

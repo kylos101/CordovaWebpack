@@ -1,16 +1,17 @@
 var componentController = require('./component.controller.js');
+var camera = require('./camera.js');
+var motion = require('./motion.js');
 
 var app = {
     initialize: function () {
-        var loadCamera = document.getElementById('loadCamera');
+        var loadCamera = document.getElementById(camera.id);
         loadCamera.addEventListener('click', app.load, false);
 
-        var loadMotion = document.getElementById('loadMotion');
+        var loadMotion = document.getElementById(motion.id);
         loadMotion.addEventListener('click', app.load, false);
     },
     load: function (e) {
-        var camera = require('./camera.js');
-        var motion = require('./motion.js');
+
 
         console.log('received: ' + e.target.id);
 

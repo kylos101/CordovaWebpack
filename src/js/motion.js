@@ -1,25 +1,30 @@
 /*global navigator */
 
+// custom framework writes the mark-up and initializes
+// show the motion mark-up
+// set breakpoints on motion.initialize (line 191) and walk in
+// set breakpoints on onSuccess (line 174) to inspect the result and onError (line 182)
+
 var motion = {
     context: null, // the html canvas element
     direction: "Start", // the calculated orientation for this device
     speed: "Stopped", // how quickly is the device orientation changing
     speedValue: 0, // the velocity for the orientation change
-    history: 5, // how far back we track device orientation states    
+    history: 5, // how far back we track device orientation states
     isReversed: function (value) {
         if (value > 0)
-        { 
+        {
             return false;
         }
-        else 
+        else
         {
             return true;
         }
     },
-    items: [],    
-    getSpeedValue: function (acceleration) {       
-      var item = acceleration; // in chrome, this doesn't change.    
-      
+    items: [],
+    getSpeedValue: function (acceleration) {
+      var item = acceleration; // in chrome, this doesn't change.
+
       if (!this.items) {
           this.items = [];
           return null;
@@ -39,37 +44,37 @@ var motion = {
       this.items.push(item); // add the newest item
 
       // get distance / time
-      var speeds = [];      
+      var speeds = [];
       for (var v = 0; v < this.items.length - 1; v++)
-      {          
+      {
           var speed = this.getVelocity(this.items[v+1], this.items[v]);
           speeds.push(speed);
       }
-      
+
       var avgSpeed = Math.max.apply(null, speeds);
       if (speeds.length == 0)
-      { 
+      {
           return 0;
       }
     //   debugger;
-      return avgSpeed;     
+      return avgSpeed;
     },
     getVelocity: function(item1, item2) {
         var x = Math.pow((item2.x - item1.x),2);
         var y = Math.pow((item2.y - item1.y),2);
         var z = Math.pow((item2.z - item1.z),2);
-        
+
         var dist = Math.sqrt(x+y+z); // m/s^2
         var time = item2.timestamp - item1.timestamp; // milliseconds
         if (dist == 0)
         {
             return 0;
         }
-        var velocity = dist / time;        
+        var velocity = dist / time;
         return velocity;
     },
     setSpeed: function (item) {
-        this.speedValue = Math.abs(this.getSpeedValue(item));        
+        this.speedValue = Math.abs(this.getSpeedValue(item));
 
         if (this.speedValue < .0005)
         {
@@ -80,12 +85,12 @@ var motion = {
         {
             this.speed = "Slow";
             return;
-        }        
+        }
         if (this.speedValue < .008)
         {
             this.speed = "Medium";
             return;
-        }        
+        }
         if (this.speedValue < .03)
         {
             this.speed = "Okay, we're moving";
@@ -95,7 +100,7 @@ var motion = {
         {
             this.speed = "Whoooa!";
             return;
-        } 
+        }
         if (this.speedValue >= .05)
         {
             this.speed = "Super fast!!!";
@@ -103,7 +108,7 @@ var motion = {
         }
     },
     getDirection: function (acceleration) {
-                
+
         var x = acceleration.x;
         var y = acceleration.y;
         var z = acceleration.z;
@@ -163,52 +168,52 @@ var motion = {
                 break;
         }
         return retVal;
-    },    
+    },
     onSuccess: function (acceleration) {
         // our this context is "window" when this event fires...so we need to work with motion
-        motion.direction = motion.getDirection(acceleration);  
-        motion.context.clearRect(0,0,200,200);      
+        motion.direction = motion.getDirection(acceleration);
+        motion.context.clearRect(0,0,200,200);
         motion.context.fillText(motion.direction,10,50);
         motion.setSpeed(acceleration);
-        motion.context.fillText("Moving Avg (" + motion.history + "), freq. " + motion.options.frequency + "ms: ",10,100);        
+        motion.context.fillText("Moving Avg (" + motion.history + "), freq. " + motion.options.frequency + "ms: ",10,100);
         motion.context.fillText(motion.speed + ", " + motion.speedValue,10,150);
     },
     onError: function (){
-        alert('Error!');
+        alert('Motion error!');
     },
-    options: {         
+    options: {
         frequency: 500 // how often (in ms) this should poll
-    }, 
+    },
     watch: null,
-    initialize: function () {             
-        
+    initialize: function () {
+
         // hook up our motion component to the corresponding element
         var element = document.getElementById("myCanvas");
         motion.context = element.getContext("2d");
 
         // start reading data from the accelerometer
         var watchID = navigator.accelerometer.watchAcceleration(motion.onSuccess, motion.onError, motion.options);
-        motion.watch = watchID;                           
+        motion.watch = watchID;
     }
 }
 
 var motionExports = {
-    id: "loadMotion",
+    id: "motionFeature",
     content: function () {
         require('../css/motion.css');
-        var content = require('../html/motion.html'); 
+        var content = require('../html/motion.html');
         return content;
     },
     initialize: function () {
         document.addEventListener("deviceready", motion.initialize, false);
     },
-    dispose: function () {        
+    dispose: function () {
         document.removeEventListener("deviceready", motion.initialize, false);
-        navigator.accelerometer.clearWatch(motion.watch);  
-                        
+        navigator.accelerometer.clearWatch(motion.watch);
+
         // SMALL BUG - clearWatch leaves devicemotion event listeners behind, they don't fire though
         // the error, Error: exec proxy not found for :: Accelerometer :: stop
-        // the issue, https://issues.apache.org/jira/browse/CB-7629                 
+        // the issue, https://issues.apache.org/jira/browse/CB-7629
     }
 }
 
