@@ -20,8 +20,8 @@ var index = {
         index.receivedEvent('deviceready');
 
         // !!! IMPORTANT !!!
-        // This loads the app (ignore require for now, out of scope for this talk)
-        // Move onto the camera component...
+        // This loads app.js (ignore require, app, and controller for now, out of scope for this talk)
+        // Show how app.initialize is called, and then move onto the camera component...
         require('./app.js');
     },
     // Update DOM on a Received Event

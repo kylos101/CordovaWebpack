@@ -1,6 +1,6 @@
 /*global Camera navigator*/
 
-// custom framework writes the mark-up and initializes
+// explain this renders in the "content" DIV on index.html (custom framework)
 // show the camera mark-up
 // start with cameraExport.initialize
 // set breakpoints on getPicture (line 98) and walk in

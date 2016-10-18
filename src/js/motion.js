@@ -1,6 +1,6 @@
 /*global navigator */
 
-// custom framework writes the mark-up and initializes
+// explain this renders in the "content" DIV on index.html (custom framework)
 // show the motion mark-up
 // set breakpoints on motion.initialize (line 191) and walk in
 // set breakpoints on onSuccess (line 174) to inspect the result and onError (line 182)
