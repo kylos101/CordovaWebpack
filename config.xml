@@ -26,6 +26,8 @@
     <platform name="android">
         <allow-intent href="market:*" />
 
+        <hook src="hooks/beforeAndroidRun.bat" type="before_run" />
+
         <!--does not work with android 6.0 (which prompts)-->
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.CAMERA" />
