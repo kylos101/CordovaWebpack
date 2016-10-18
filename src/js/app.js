@@ -4,11 +4,11 @@ var motion = require('./motion.js');
 
 var app = {
     initialize: function () {
-        var loadCamera = document.getElementById(camera.id);
-        loadCamera.addEventListener('click', app.load, false);
+        var cameraFeature = document.getElementById(camera.id);
+        cameraFeature.addEventListener('click', app.load, false);
 
-        var loadMotion = document.getElementById(motion.id);
-        loadMotion.addEventListener('click', app.load, false);
+        var motionFeature = document.getElementById(motion.id);
+        motionFeature.addEventListener('click', app.load, false);
     },
     load: function (e) {
 
