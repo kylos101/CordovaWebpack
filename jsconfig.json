@@ -1,5 +1,5 @@
 {
-     "exclude": [
-        "node_modules","platforms","www"
+    "files": [
+        "src/"
     ]
 }
