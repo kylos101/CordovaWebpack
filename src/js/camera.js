@@ -85,8 +85,10 @@ var cameraExport = {
         return content;
     },
     initialize: function () {
-        this.getImageButton = document.getElementById("getImage");
-        this.getImageButton.addEventListener("click", this.getPicture);
+        document.addEventListener("deviceready", function () {
+            cameraExport.getImageButton = document.getElementById("getImage");
+            cameraExport.getImageButton.addEventListener("click", cameraExport.getPicture);
+        }, false);
     },
     getPicture: function () {
         console.log('get the picture');
