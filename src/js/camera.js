@@ -54,6 +54,20 @@ var camera = {
     },
     takePicture: function () {
         navigator.camera.getPicture(this.onSuccess, this.onError, this.cameraOptions());
+    },
+    cleanUp: function () {
+        var leftOverLibraryElements = document.getElementsByClassName('cordova-camera-select');
+        var leftOverCameraElements = document.getElementsByClassName('cordova-camera-capture');
+
+        // remove mark-up left behind by Cordova
+        for (var i=0; i< leftOverLibraryElements.length; i++)
+        {
+            document.body.removeChild(leftOverLibraryElements[i]);
+        }
+        for (var n=0; n< leftOverCameraElements.length; n++)
+        {
+            document.body.removeChild(leftOverCameraElements[n]);
+        }
     }
 }
 
@@ -94,6 +108,7 @@ var cameraExport = {
     },
     dispose: function () {
         this.getImageButton.removeEventListener("click", this.getPicture);
+        camera.cleanUp();
     }
 }
 
